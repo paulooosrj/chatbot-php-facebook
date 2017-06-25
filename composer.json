@@ -1,0 +1,28 @@
+{
+    "name": "paulaodeveloper/chatbotphp",
+    "type": "library",
+    "description": "Chatbot with Facebook",
+    "keywords": ["chatbot","bot"],
+    "homepage": "https://github.com/PaulaoDeveloper/ChatBot-Messenger-PHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Paulão Developer",
+            "email": "PaulaoDeveloper@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^5.3.3 || ^7.0",
+        "pusher/pusher-php-server": "^2.6",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "noahbuscher/macaw": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "BotSource\\" : "src/Bot"
+        }
+    }
+}

@@ -1,0 +1,13 @@
+{
+	"meu nome": "callbackName",
+	"oi": "callbackOi",
+	"boa noite": "callbackBoaNoite",
+	"fazer um robo igual": "callbackRoboIgual",
+	"/clima": "callbackClima",
+	"/youtube": "callbackYoutube",
+	"/procurar": "callbackProcurar",
+	"ver logs": "callbackLogs",
+	"clicou_comecar": "callbackComecar",
+	"continua_conversa": "callbackContinuaConversa",
+	"help": "help"
+}
