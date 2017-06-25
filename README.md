@@ -33,24 +33,6 @@
  1. Acesse o Painel De Desenvolvedores do Facebook **https://developers.facebook.com**
 
  
-<<<<<<< HEAD
-     * Meus Aplicativos > Adicionar Aplicativo
-     * Nome De Exibiçao > De sua Preferencia
-     * Clique no Botão > Crie um número de identificação do aplicativo.
-    
- 2. Aplicativo Criado
-
-    * Com o Aplicativo já criado  No menu vá em  **Adicionar Produto**
-    
-
- 3. Configurando o Messenger
-
-    * Clique Encima do Botão Começar na Opção **"Messenger"**
-
- 4. Configuraçoes
-
-    * Com o Messenger Adicionado Vá em **Webhooks** E Clique em **Configurar Webhooks**
-=======
 	 * Meus Aplicativos > Adicionar Aplicativo
 	 * Nome De Exibiçao > De sua Preferencia
 	 * Clique no Botão > Crie um número de identificação do aplicativo.
@@ -67,56 +49,27 @@
  4. Configuraçoes
 
 	* Com o Messenger Adicionado Vá em **Webhooks** E Clique em **Configurar Webhooks**
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
 
  5. Configurando WebHooks
 
 
-<<<<<<< HEAD
-    * Em **URL de retorno de chamada:** coloque o https://seudominio.com/webhooks.
-    * **Senha:** Abra o arquivo **index.php** e atribua uma senha para verificaçao no webhooks.
-          
-=======
 	* Em **URL de retorno de chamada:** coloque o https://seudominio.com/webhooks.
 	* **Senha:** Abra o arquivo **index.php** e atribua uma senha para verificaçao no webhooks.
 	      
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
     
     ---------
     
     
-<<<<<<< HEAD
-    ```php
-    Route::get('/webhook', function() {
-      $token_access = "minhasenha123";
-    });
-    ```
-          
-=======
 	```php
 	Route::get('/webhook', function() {
       $token_access = "minhasenha123";
     });
    	```
    	      
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
     
     ---------
     
     
-<<<<<<< HEAD
-    * Em **Verificar token:** o valor definido em $token_access.
-    * Em **Campos de Assinatura:** selecione **messages, messaging_postbacks, message_deliveries, message_reads**
-    * Apos seguir os passos clique em **Verificar e Salvar**
-    
-    
- 6. Configurando Servidor PHP
-
-    Apos a verificaçao ser bem sucedida.
-    
-  - Abra o terminal na pasta baixada o repositorio é de um **composer install**
-    * **Config Index:** Abra o arquivo **index.php** e insira sua configuração
-=======
 	* Em **Verificar token:** o valor definido em $token_access.
 	* Em **Campos de Assinatura:** selecione **messages, messaging_postbacks, message_deliveries, message_reads**
 	* Apos seguir os passos clique em **Verificar e Salvar**
@@ -128,7 +81,6 @@
 	
   - Abra o terminal na pasta baixada o repositorio é de um **composer install**
 	* **Config Index:** Abra o arquivo **index.php** e insira sua configuração
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
       
     
     ---------
@@ -136,15 +88,6 @@
     
   ```php
   Route::post("/webhook", function(){
-<<<<<<< HEAD
-            // Cria o Robo
-            $BotCore = BotCore::getInstance();
-            // Seta as Configs
-            $BotCore->setKey("KEY GERADA DA SUA PAGINA");
-            $BotCore->setToken("minhasenha123");
-            $BotCore->setDominio("https://meusite.com");
-            $BotCore->endpoint("https://meusite.com/endpoint");
-=======
 		    // Cria o Robo
 		    $BotCore = BotCore::getInstance();
 		    // Seta as Configs
@@ -152,7 +95,6 @@
 		    $BotCore->setToken("minhasenha123");
 		    $BotCore->setDominio("https://meusite.com");
 		    $BotCore->endpoint("https://meusite.com/endpoint");
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
     });
    ```
    
@@ -165,19 +107,11 @@
 
  7. Configurar Mensagens
 
-<<<<<<< HEAD
-    - Para Configurar bastar ir ate **neural/neuro-system.json** 
-  - As Callbacks são configurada em **src/bot/callbacks.php**
-  
-    > **Note:**
-    > - As mensagens são configuradas em JSON.
-=======
 	- Para Configurar bastar ir ate **neural/neuro-system.json** 
   - As Callbacks são configurada em **src/bot/callbacks.php**
   
 	> **Note:**
 	> - As mensagens são configuradas em JSON.
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
 
 ___________
 
@@ -199,8 +133,4 @@ ___________
 
  - WhatsApp: http://bit.ly/whatsappdopaulo
  
-<<<<<<< HEAD
 --------------------------
-=======
---------------------------
->>>>>>> 6d99201a96b7175b01e8e937ade111c3a28bb021
