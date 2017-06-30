@@ -30,6 +30,10 @@
 
 ----------
 
+[![Tutorial Configurando O Chatbot](https://img.youtube.com/vi/_HQfTZLV1lA/0.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
+
+----------
+
  1. Acesse o Painel De Desenvolvedores do Facebook **https://developers.facebook.com**
 
  
