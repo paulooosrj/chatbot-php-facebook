@@ -24,7 +24,7 @@
 
 ----------
 
-#### **Demo:** https://fb.com/capaspersonalizadaass
+#### **Demo:** https://www.facebook.com/PDeveloperchatbots/
 #### **Note:** Abra o chat da pagina e envie **help**
     
 
