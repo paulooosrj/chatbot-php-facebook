@@ -30,7 +30,8 @@
 
 ----------
 
-[![Tutorial Configurando O Chatbot](https://img.youtube.com/vi/_HQfTZLV1lA/0.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
+#Video Tutorial
+[![Tutorial Configurando O Chatbot](http://i.imgur.com/lkLmP4N.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
 
 ----------
 
