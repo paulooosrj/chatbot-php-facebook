@@ -21,12 +21,12 @@
 		include "views/privacidade.txt";
 	});
 
-	Route::get('/endpoint/(:any)/(:any)/(:any)/(:any)/(:any)/(:any)', function($key, $secret, $app_id, $canal, $event, $msg){
-		$options = array('cluster' => 'us2','encrypted' => true);
-  		$pusher = new Pusher($key,$secret,$app_id,$options);
-  		$data = array();
-  		$data['message'] = $msg;
-  		$pusher->trigger($canal, $event, $msg);
+	Route::post('/server-websocket', function(){
+		file_put_contents('debug.txt', json_encode($_POST));
+		$canal = strip_tags(addslashes($_POST['canal']));
+		$data = json_encode($_POST['data']);
+		$res = file_get_contents("https://gentle-ocean-75288.herokuapp.com/api/socket?canal=".$canal."&data=".urlencode($data));
+		echo $res;
 	});
 
 	Route::get('/logs', function(){
