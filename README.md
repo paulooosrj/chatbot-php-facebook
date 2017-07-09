@@ -24,9 +24,18 @@
 
 ----------
 
-#### **Demo:** https://fb.com/capaspersonalizadaass
+#### **Demo:** https://www.facebook.com/PDeveloperchatbots/
 #### **Note:** Abra o chat da pagina e envie **help**
     
+
+----------
+
+
+# Video Tutorial
+
+
+[![Tutorial Configurando O Chatbot](http://i.imgur.com/APHcJIE.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
+
 
 ----------
 
