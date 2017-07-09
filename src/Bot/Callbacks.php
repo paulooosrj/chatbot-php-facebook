@@ -25,6 +25,23 @@
         )));
 
 	}
+
+	public function getClima($cidade, $estado){
+		$cidade = urldecode($cidade); $estado = urldecode($estado);
+		$key = "d6cab59d";
+		$res = (array) json_decode(file_get_contents("https://api.hgbrasil.com/weather/?format=json&city_name={$cidade},{$estado}&key=".$key));
+		$resultado = (array) $res["results"];
+		$data = array(
+			"temperatura" => $resultado["temp"],
+			"descricao" => $resultado["description"],
+			"periodo" => $resultado["currently"],
+			"umidade" => $resultado["humidity"],
+			"v_vento" => $resultado["wind_speedy"],
+			"dia" => $resultado["date"],
+			"horario" => $resultado["time"]
+		);
+		return $data;
+	}
 	
 	public function callbackName($info){
 
@@ -50,18 +67,18 @@
 
 	public function callbackRoboIgual(){
 
-		return array("text" => "https://github.com/PaulaoDeveloper/ChatBot-Messenger-PHP");
+		return array("text" => "https://github.com/PaulaoDev/ChatBot-PHP-Facebook");
 
 	}
 
 	public function callbackClima($res){
-		
+
 		$resValue = explode("-", $res["extern_value"]);
 		$cidade = urlencode(trim($resValue[0]));
 		$estado = urlencode(trim($resValue[1]));
 		if(strpos($cidade, '+')){ $cidade = str_replace('+','', $cidade); }
 		if(count($estado) != 1){ $erro = "Erro ao Digitar Sigla Do Estado!"; }
-		$clima = (array) json_decode(file_get_contents("http://chatbotphp.ga/clima/{$cidade}/{$estado}"));
+		$clima = $this->getClima($cidade, $estado);
 		if(!empty($clima) && !isset($erro)){
 			$fraseClima = "⭕ {$clima["temperatura"]}ºC \n☁ {$clima["descricao"]} \n🕐 {$clima["periodo"]} \n🎈 Umidade: {$clima["umidade"]} \n🌀 {$clima["v_vento"]} \n📅 {$clima["dia"]} \n🕒 {$clima["horario"]}";
 		}else{
@@ -107,11 +124,10 @@
 
 	public function callbackComecar($info){
 
-		$estado[$info["sender"]["id"]] = "comecando";
 		$dataBtn = $this->montaBotao($info["sender"]["id"], "Escolha uma Opção", array(
 			array(
             	"type" => "web_url",
-            	"url"  => "https://github.com/PaulaoDeveloper/ChatBot-Messenger-PHP",
+            	"url"  => "https://github.com/PaulaoDev/ChatBot-PHP-Facebook",
             	"title"=> "Repositorio"
           	),
           	array(

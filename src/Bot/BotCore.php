@@ -1,13 +1,13 @@
 <?php
 	
 	namespace Src\Bot;
-	//require_once 'Callback.php';
+
+	require_once 'config/botConfig/config.php';
 
 	class BotCore {
 
 		private static $key;
 		private static $token;
-		private static $pusher;
 		private static $logger;
 		private static $endpoint;
 		private static $dominio;
@@ -23,45 +23,35 @@
        	 	return $instance;
 		}
 
-		public function getKey(){ return self::$key; }
-
-    	protected function __construct(){}	
+    	protected function __construct(){
+    		self::$key = BOT_KEY;
+    		self::$token = BOT_TOKEN;
+    		self::$endpoint = BOT_ENDPOINT;
+    		self::$dominio = BOT_DOMINIO;
+    	}	
 
     	// Configs do ChatBot
 
-		public function setKey($key){ self::$key = $key; }
-
-		public function setToken($token){ self::$token = $token; }
-
 		public function logger($cond){
-			if(!empty(self::$pusher) && count(self::$pusher) == 3 && $cond == true){
+			if(!empty(self::$endpoint) && $cond == true){
 				self::$logger = $cond;
 			}else{
 				self::$logger = false;
-				echo "Configure o acesso ao seu Pusher !!";
+				echo "Configure o acesso ao seu Servidor De Websockets !!";
 			}
 		}
-
-		public function setDominio($dominio){ self::$dominio = $dominio; }
 
 		public function setCallbacks($callback){
 			self::$callbacks = $callback;
 		}
 
-		public static function configPusher(array $config){
-			self::$pusher = $config;
-		}
-		
-		public function endpoint($point){
-			self::$endpoint = $point;
-		}
-
 		// Envia o Log Pelo Pusher
 		public function MsgPusher($msg){
 			$canal = "chatbotphp";
-  			$event = "logger";
-  			$req_url = self::$endpoint."/".self::$pusher["key"]."/".self::$pusher["secret"]."/".self::$pusher["app_id"]."/".$canal."/".$event."/".$msg;
-			$exec = file_get_contents($req_url);
+  			$post = new \Src\Http\Post("http://chatbotphp.ga/server-websocket", array(
+				"canal" => $canal,
+    			"data" => $msg
+    		));
 		}
 
 		public function sendApi($d){
@@ -133,9 +123,17 @@
 			}
 		}
 
+		public static function getMessage(){
+			return json_decode(file_get_contents('php://input'), true);
+		}
+
 		public function Run(){
 			// RECEBE AS INFOS
-			$receive = json_decode(file_get_contents('php://input'), true);
+			$receive = $this::getMessage();
+			if(isset($receive)){
+				$log = json_encode($receive);
+				file_put_contents("logs.txt", "{$log}\n", FILE_APPEND);
+			}
 			// INICIA O TRATAMENTO DE MENSAGEM POR MENSAGEM
 			if(isset($receive["entry"]) && $receive["object"] == "page"){
 				foreach ($receive['entry'] as $key => $entry) {	
@@ -144,6 +142,10 @@
 					foreach($entry["messaging"] as $k => $event){
 						if(isset($event['message'])){ 
 							$this->trataMensagem($event); 
+						} else if(isset($event['postback'])){
+							$id = $event["sender"]["id"];
+							$text = $event['postback']['payload'];
+							$this->eventsTrigger($id, $text, $event);
 						}
 					}
 				}

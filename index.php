@@ -1,6 +1,7 @@
 <?php
 
 	require_once __DIR__ ."/vendor/autoload.php";
+	require_once 'config/botConfig/config.php';
 
 	use \NoahBuscher\Macaw\Macaw as Route;
 	use \Src\Bot\BotCore as BotCore;
@@ -13,12 +14,9 @@
 	});
 
 	// DEFINE AS ROTAS
-	Route::get('/termos', function(){
-		include "views/termos.txt";
-	});
 
-	Route::get('/privacidade', function(){
-		include "views/privacidade.txt";
+	Route::get('/server', function(){
+		include 'views/serversocket.html';
 	});
 
 	Route::post('/server-websocket', function(){
@@ -29,30 +27,8 @@
 		echo $res;
 	});
 
-	Route::get('/logs', function(){
-		include "views/logs.html";
-	});
-
-	Route::get('/clima/(:any)/(:any)', function($cidade, $estado){
-		$cidade = urldecode($cidade); $estado = urldecode($estado);
-		$key = "d6cab59d";
-		$res = (array) json_decode(file_get_contents("https://api.hgbrasil.com/weather/?format=json&city_name={$cidade},{$estado}&key=".$key));
-		$resultado = (array) $res["results"];
-		$data = array(
-			"temperatura" => $resultado["temp"],
-			"descricao" => $resultado["description"],
-			"periodo" => $resultado["currently"],
-			"umidade" => $resultado["humidity"],
-			"v_vento" => $resultado["wind_speedy"],
-			"dia" => $resultado["date"],
-			"horario" => $resultado["time"]
-		);
-		header("Content-Type: application/json");
-		echo json_encode($data);
-	});
-
 	Route::get('/webhook', function() {
-  		
+
 		// VERIFICAÇAO DO FACEBOOK
 		$challenge = $_REQUEST['hub_challenge'];
 		$verify_token = $_REQUEST['hub_verify_token'];
@@ -70,28 +46,13 @@
 	});
 
 	Route::post("/webhook", function(){
-
 		// Cria o Robo
 		$BotCore = BotCore::getInstance();
-		// Seta as Configs
-		$BotCore->setKey("SUA KEY");
-		$BotCore->setToken("minhasenha123");
-		$BotCore->setDominio("https://meudominio.com/");
-		$BotCore->endpoint("https://meudominio.com/endpoint");
-		// Configura o Pusher , http://pusher.com
-		$BotCore->configPusher(array(
-			"key" => "KEY PUSHER",
-			"secret" => "SECRET PUSHER",
-			"app_id" => "APP ID"
-		));
-		// Log Ativo se estiver configurado o Pusher.
 		$BotCore->logger(true);
-		// Seta os Serviços
 		// Passa Callbacks junto com Api Rest do Facebook OO
-		$BotCore->setCallbacks(new Callbacks(new Facebook($BotCore->getKey())));
+		$BotCore->setCallbacks(new Callbacks(new Facebook(BOT_KEY)));
 		// Bot Inicia
 		$BotCore->Run();
-
 	});
 
 	// Pega as rotas das Frases Para Callback
@@ -105,9 +66,9 @@
 	// ROTA PARA TESTAR O ROBO FEITO
 	Route::get('/teste/(:any)/(:any)', function($id, $msg){
 
-		$callback = new Callbacks(new Facebook("SUA KEY"));
+		$callback = new Callbacks(new Facebook(BOT_KEY));
 		print_r($callback->$msg(array("user_id" => $id)));
-		$url = 'https://graph.facebook.com/v2.6/me/messages?access_token=SUA KEY';
+		$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.BOT_KEY;
 		$client = new \GuzzleHttp\Client(['headers' => [
 			'Content-Type' => 'application/json'
 		]]);
