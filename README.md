@@ -1,5 +1,5 @@
 
-<p align="center"> <img src="http://i.imgur.com/6KXNtkF.png" alt="ChatBotPHP"/> </p>
+<p align="center"> <img src="https://i.imgur.com/6KXNtkF.png" alt="ChatBotPHP"/> </p>
 
 ----------
 
@@ -34,7 +34,7 @@
 # Video Tutorial
 
 
-[![Tutorial Configurando O Chatbot](http://i.imgur.com/APHcJIE.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
+[![Tutorial Configurando O Chatbot](https://i.imgur.com/APHcJIE.jpg)](https://www.youtube.com/watch?v=_HQfTZLV1lA)
 
 
 ----------
@@ -140,6 +140,6 @@ ___________
 
 --------------------------
 
- - WhatsApp: http://bit.ly/whatsappdopaulo
+ - WhatsApp: https://bit.ly/whatsappdopaulo
  
 --------------------------
