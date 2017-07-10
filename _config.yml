@@ -1,6 +1,8 @@
 theme: jekyll-theme-minimal
 # Setup
 title:        Chatbot PHP Facebook
+description: Chatbot Para Facebook Feito Em PHP Orientado a Objetos
+show_downloads: true
 tagline:      Chatbot Para Facebook Feito Em PHP Orientado a Objetos
 baseurl:      "/ChatBot-PHP-Facebook"
 paginate:     1
