@@ -1,4 +1,24 @@
 theme: jekyll-theme-cayman
-title: Chatbot Para Facebook
-description: Chatbot para facebook feito em php oo
-show_downloads: true
+# Setup
+title:        [Chatbot PHP Facebook]
+description: [ChatBot Para Facebook Feito Em PHP]
+google_analytics: [UA-54473427-1]
+baseurl:      ""
+paginate:     1
+values:
+      layout: single
+
+# About/contact
+author:
+  name:       Tanya Gupta
+  url:        paulaodev.github.io
+  baseurl:    ""
+
+# Gems
+gems:
+  - jekyll-paginate
+
+#Others
+markdown: kramdown  
+
+include: ["_pages"]
