@@ -12,6 +12,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "noahbuscher/macaw": "dev-master"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "autoload": {
         "psr-4": {
             "Src\\" : "src"
