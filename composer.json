@@ -1,5 +1,15 @@
 {
+    "name": "ChatBotPHP",
+    "description": "Chatbot para facebook feito em php OO",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Chatbot Facebook PHP",
+            "email": "jskhanframework@gmail.com"
+        }
+    ],
     "require": {
+        "PaulaoDev/ChatBot-PHP":"*",
         "guzzlehttp/guzzle": "^6.2",
         "noahbuscher/macaw": "dev-master"
     },
