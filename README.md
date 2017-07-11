@@ -9,7 +9,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
 [![GitHub issues](https://img.shields.io/github/issues/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/issues)
 [![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/subscription)
-[![Whatsapp](https://img.shields.io/badge/whatsapp-on-green.svg)](https://bit.ly/whatsappdopaulo)
+[![Whatsapp](https://img.shields.io/badge/Whatsapp-On-green.svg)](https://bit.ly/whatsappdopaulo)
 [![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://goo.gl/ujU2QU)
 [![Donate Bitcoin](https://img.shields.io/badge/Donate-Bitcoin-yellow.svg)](https://blockchain.info/address/37RWdwgsXK94pANXm9fHv722k4zQmtmCpH)
 
@@ -97,7 +97,7 @@
 	Apos a verificaçao ser bem sucedida.
 	
   - Abra o terminal na pasta baixada o repositorio é de um **composer install**
-	* **Config Index:** Abra o arquivo **index.php** e insira sua configuração
+	* **Config Index:** Abra o arquivo **[`index.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/index.php)** e insira sua configuração
       
     
     ---------
@@ -119,13 +119,13 @@
    ----------
     
     
- * **Para gerar a KEY:** vá ate **Geração de token** acima de Webhooks em **Pagina** selecione a pagina desejada para o BOT. Ira Abrir uma janela pedindo a permissão da pagina para o acesso do Facebook Developers. Apos Aceitar em **Token de acesso da Página** ira aparecer um Token copie ele e coloque na variavel $key em **/views/webhooks.php**.
+ * **Para gerar a KEY:** vá ate **Geração de token** acima de Webhooks em **Pagina** selecione a pagina desejada para o BOT. Ira Abrir uma janela pedindo a permissão da pagina para o acesso do Facebook Developers. Apos Aceitar em **Token de acesso da Página** ira aparecer um Token copie ele e coloque na variavel $key em **[`/views/webhooks.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/views/webhooks.php)**.
 
 
  7. Configurar Mensagens
 
-	- Para Configurar bastar ir ate **neural/neuro-system.json** 
-  - As Callbacks são configurada em **src/bot/callbacks.php**
+	- Para Configurar bastar ir ate **[`/neural/neuro-system.json`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/neural/neuro-system.json)** 
+  - As Callbacks são configurada em **[`/src/bot/callbacks.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/src/bot/callbacks.php)**
   
 	> **Note:**
 	> - As mensagens são configuradas em JSON.
