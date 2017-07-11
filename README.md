@@ -16,7 +16,7 @@
 ----------
 
 
- **Required:** 
+ **Essenciais Para A Configuração:** 
   > - PHP >= 5.4
   > - Composer. https://getcomposer.org/download/
   > - Entender o Basico de PHP 
@@ -24,11 +24,17 @@
 
 ---------
 
+   **Pra que Serve?** 
    - Atendente Para Paginas
    - Facil Configuração
    - Menor Tempo De Resposta
    - Integração Com Banco De Dados
    - Facil manutenção
+
+----------
+
+   ## Iniciar Pelo Composer:
+   `composer create-project paulao-dev/chat-bot-php-facebook`
 
 ----------
 
