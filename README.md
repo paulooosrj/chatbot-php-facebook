@@ -3,7 +3,11 @@
 
 ----------
 
-## ChatBot Para Messenger Feito Em PHP
+## ChatBot Para Messenger Feito Em PHP 
+[![DUB](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/LICENSE) 
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://goo.gl/ujU2QU)
+[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
+[![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/subscription)
 
 ----------
 
@@ -136,9 +140,6 @@ ___________
 
 --------------------------
 
- - Paypal:  https://goo.gl/ujU2QU
-
---------------------------
 
  - WhatsApp: https://bit.ly/whatsappdopaulo
  
