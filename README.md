@@ -4,10 +4,14 @@
 ----------
 
 ## ChatBot Para Messenger Feito Em PHP 
-[![DUB](https://img.shields.io/dub/l/vibe-d.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/LICENSE) 
-[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://goo.gl/ujU2QU)
-[![GitHub forks](https://img.shields.io/github/forks/badges/shields.svg?style=social&label=Fork)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PaulaoDev/ChatBot-PHP-Facebook/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
+[![GitHub issues](https://img.shields.io/github/issues/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/issues)
 [![GitHub watchers](https://img.shields.io/github/watchers/badges/shields.svg?style=social&label=Watch)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/subscription)
+[![Whatsapp](https://img.shields.io/badge/whatsapp-on-green.svg)](https://bit.ly/whatsappdopaulo)
+[![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://goo.gl/ujU2QU)
+[![Donate Bitcoin](https://img.shields.io/badge/Donate-Bitcoin-yellow.svg)](https://blockchain.info/address/37RWdwgsXK94pANXm9fHv722k4zQmtmCpH)
 
 ----------
 
@@ -127,20 +131,3 @@
 	> - As mensagens são configuradas em JSON.
 
 ___________
-
- # Ajude o Projeto
- 
-___________
-
-  - Carteira Bitcoin: 37RWdwgsXK94pANXm9fHv722k4zQmtmCpH 
-
---------------------------
-
-<p align="center"><img src="https://chart.googleapis.com/chart?chs=240x240&choe=UTF-8&chld=M%7C0&cht=qr&chl=37RWdwgsXK94pANXm9fHv722k4zQmtmCpH" width="200"/></p> 
-
---------------------------
-
-
- - WhatsApp: https://bit.ly/whatsappdopaulo
- 
---------------------------
