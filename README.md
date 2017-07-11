@@ -32,8 +32,8 @@
 
 ----------
 
-#### **Demo:** https://www.facebook.com/PDeveloperchatbots/
-#### **Note:** Abra o chat da pagina e envie **help**
+#### **Demo:** [`Demo Online`](https://www.facebook.com/PDeveloperchatbots/)
+#### **Note:** Abra o chat da pagina e envie **`help`**
     
 
 ----------
@@ -47,7 +47,7 @@
 
 ----------
 
- 1. Acesse o Painel De Desenvolvedores do Facebook **https://developers.facebook.com**
+ 1. Acesse o Painel De Desenvolvedores do [`Facebook Developers`](https://developers.facebook.com)
 
  
 	 * Meus Aplicativos > Adicionar Aplicativo
@@ -70,8 +70,8 @@
  5. Configurando WebHooks
 
 
-	* Em **URL de retorno de chamada:** coloque o https://seudominio.com/webhooks.
-	* **Senha:** Abra o arquivo **index.php** e atribua uma senha para verificaçao no webhooks.
+	* Em **URL de retorno de chamada:** coloque o `https://seudominio.com/webhooks`.
+	* **Senha:** Abra o arquivo **[`index.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/index.php)** e atribua uma senha para verificaçao no webhooks.
 	      
     
     ---------
@@ -96,30 +96,25 @@
 
 	Apos a verificaçao ser bem sucedida.
 	
-  - Abra o terminal na pasta baixada o repositorio é de um **composer install**
-	* **Config Index:** Abra o arquivo **[`index.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/index.php)** e insira sua configuração
+  - Abra o terminal na pasta baixada o repositorio é de um **`composer install`**
+	* **Config Bot:** Abra o arquivo **[`/config/botConfig/config.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/config/botConfig/config.php)** e insira sua configuração
       
     
     ---------
     
     
   ```php
-  Route::post("/webhook", function(){
-		    // Cria o Robo
-		    $BotCore = BotCore::getInstance();
-		    // Seta as Configs
-		    $BotCore->setKey("KEY GERADA DA SUA PAGINA");
-		    $BotCore->setToken("minhasenha123");
-		    $BotCore->setDominio("https://meusite.com");
-		    $BotCore->endpoint("https://meusite.com/endpoint");
-    });
+  define("BOT_KEY", "SUA KEY");
+	define("BOT_TOKEN", "minhasenha123");
+	define("BOT_DOMINIO", "https://meusite.com/");
+	define("BOT_ENDPOINT", BOT_DOMINIO."endpoint");
    ```
    
     
    ----------
     
     
- * **Para gerar a KEY:** vá ate **Geração de token** acima de Webhooks em **Pagina** selecione a pagina desejada para o BOT. Ira Abrir uma janela pedindo a permissão da pagina para o acesso do Facebook Developers. Apos Aceitar em **Token de acesso da Página** ira aparecer um Token copie ele e coloque na variavel $key em **[`/views/webhooks.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/views/webhooks.php)**.
+ * **Para gerar a KEY:** vá ate **Geração de token** acima de Webhooks em **Pagina** selecione a pagina desejada para o BOT. Ira Abrir uma janela pedindo a permissão da pagina para o acesso do Facebook Developers. Apos Aceitar em **Token de acesso da Página** ira aparecer um Token quer Sera o `BOT_TOKEN` **[`/config/botConfig/config.php`](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/blob/master/config/botConfig/config.php)**.
 
 
  7. Configurar Mensagens
