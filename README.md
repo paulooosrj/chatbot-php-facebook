@@ -33,8 +33,8 @@
 
 ----------
 
-   ## Iniciar Pelo Composer:
-   `composer create-project paulao-dev/chat-bot-php-facebook`
+   ### Projeto no Composer
+   `composer chatbotphp paulao-dev/chat-bot-php-facebook`
 
 ----------
 
