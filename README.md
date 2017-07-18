@@ -3,7 +3,7 @@
 
 ----------
 
-## ChatBot Para Messenger Feito Em PHP 
+## Chatbot para messenger feito em PHP OO ( Chatbot for messenger made in PHP OO )
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PaulaoDev/ChatBot-PHP-Facebook/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
@@ -16,7 +16,7 @@
 ----------
 
 
- **Essenciais Para A Configuração:** 
+ **Essenciais Para A Configuração ( Essential For Setup ) :** 
   > - PHP >= 5.4
   > - Composer. https://getcomposer.org/download/
   > - Entender o Basico de PHP 
@@ -24,7 +24,7 @@
 
 ---------
 
-   **Pra que Serve?** 
+   **Pra que Serve? ( What is it for? )** 
    - Atendente Para Paginas
    - Facil Configuração
    - Menor Tempo De Resposta
@@ -33,13 +33,14 @@
 
 ----------
 
-   ### Projeto no Composer
+   ### Projeto no Composer ( Project in Composer )
    `composer chatbotphp paulao-dev/chat-bot-php-facebook`
 
 ----------
 
 #### **Demo:** [`Demo Online`](https://www.facebook.com/PDeveloperchatbots/)
 #### **Note:** Abra o chat da pagina e envie **`help`**
+#### **Note:** Open the page chat and send **`help`**
     
 
 ----------
