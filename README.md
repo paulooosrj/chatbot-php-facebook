@@ -3,7 +3,7 @@
 
 ----------
 
-## Chatbot para messenger feito em PHP OO ( Chatbot for messenger made in PHP OO )
+## Chatbot para messenger feito em PHP ( Chatbot for messenger made in PHP )
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/PaulaoDev/ChatBot-PHP-Facebook/master/LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/PaulaoDev/ChatBot-PHP-Facebook.svg)](https://github.com/PaulaoDev/ChatBot-PHP-Facebook/fork)
