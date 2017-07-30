@@ -3,23 +3,32 @@
 	require_once __DIR__ ."/vendor/autoload.php";
 	require_once 'config/botConfig/config.php';
 
-	use \NoahBuscher\Macaw\Macaw as Route;
+	use \App\RouterKhan\RouterKhan as Router;
+	use \App\Container\ServiceContainer as Container;
 	use \Src\Bot\BotCore as BotCore;
 	use \Src\Bot\Callbacks as Callbacks;
 	use \Src\Bot\Facebook as Facebook;
 
-	Route::get('/debug', function(){
+	$router = Router::getInstance();
+	$container = Container::Build();
+	$container->set('request', new \App\Request\Request());
+
+	$router->get('/', function($req, $res){
+		echo "Ola Mundo!!";
+	});
+
+	$router->get('/debug', function($req, $res){
 		header('Content-Type: application/json');
 		echo file_get_contents('neural/debug.json');
 	});
 
 	// DEFINE AS ROTAS
 
-	Route::get('/server', function(){
+	$router->get('/server', function($req, $res){
 		include 'views/serversocket.html';
 	});
 
-	Route::post('/server-websocket', function(){
+	$router->post('/server-websocket', function($req, $res){
 		file_put_contents('debug.txt', json_encode($_POST));
 		$canal = strip_tags(addslashes($_POST['canal']));
 		$data = json_encode($_POST['data']);
@@ -27,7 +36,7 @@
 		echo $res;
 	});
 
-	Route::get('/webhook', function() {
+	$router->get('/webhook', function($req, $res) {
 
 		// VERIFICAÇAO DO FACEBOOK
 		$challenge = $_REQUEST['hub_challenge'];
@@ -36,27 +45,25 @@
 		$token_access = "minhasenha123";
 		// VERIFICACAO DE ACESSO A PARTIR DA SENHA
 		if ($verify_token === $token_access) {
-    		echo $challenge;
-    		http_response_code(200);
+    		$res->send($challenge);
+    		$res->sendStatus(200);
 		}else{
-			die("Error");
-			http_response_code(403);
+			throw new Exception("Error Processing Webhook", 1);
+			$res->sendStatus(403);
 		}
 
 	});
 
-	Route::post("/webhook", function(){
+	$router->post("/webhook", function($req, $res){
 		// Cria o Robo
 		$BotCore = BotCore::getInstance();
 		$BotCore->logger(true);
-		// Passa Callbacks junto com Api Rest do Facebook OO
-		$BotCore->setCallbacks(new Callbacks(new Facebook(BOT_KEY)));
 		// Bot Inicia
 		$BotCore->Run();
 	});
 
 	// Pega as rotas das Frases Para Callback
-	Route::get("/neuros", function(){
+	$router->get("/neuros", function($req, $res){
 
 		header("Content-Type: application/json");
 		echo file_get_contents('neural/neuro-system.json');
@@ -64,19 +71,20 @@
 	});
 
 	// ROTA PARA TESTAR O ROBO FEITO
-	Route::get('/teste/(:any)/(:any)', function($id, $msg){
-
+	$router->params('/teste/{id}/{msg}', function($req, $res) use($container){
+		$request = $container->get('request');
+		$id = $req->params('id');
+		$msg = $req->params('msg');
 		$callback = new Callbacks(new Facebook(BOT_KEY));
-		print_r($callback->$msg(array("user_id" => $id)));
 		$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.BOT_KEY;
-		$client = new \GuzzleHttp\Client(['headers' => [
-			'Content-Type' => 'application/json'
-		]]);
-		$response = $client->post($url, array('body' => json_encode(array(
-			"recipient" => array("id" => $id),
-			"message" => $callback->$msg(array("user_id" => $id))
-		))));
-
+		$response = $request->Post([
+			"url" => $url,
+			"header" => "Content-Type: application/json",
+			"data" => json_encode([
+				"recipient" => array("id" => $id),
+				"message" => $callback->$msg(array("user_id" => $id))
+			])
+		]);
 	});
 
-	Route::dispatch();
+	$router->Run();

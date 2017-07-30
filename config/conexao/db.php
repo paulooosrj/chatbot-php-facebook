@@ -1,9 +1,9 @@
 <?php
 
-	define("HOST", "HOST MYSQL");
-	define("DB_NAME", "NAME DO BANCO");
-	define("DB_USER", "USER");
-	define("DB_PASS", "SENHA");
+	define("HOST", "seu banco");
+	define("DB_NAME", "neural");
+	define("DB_USER", "user");
+	define("DB_PASS", "senha");
 
 	$db = null;
 	try {

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <script type="text/javascript">
+    var conn = new WebSocket('ws:///0.tcp.ngrok.io:15041');
+    conn.onopen = function(e) {
+      console.log("Connection established!");
+    };
+    conn.onmessage = function(e) {
+      var data = e.data;
+      if(data.indexOf("http") != -1 || data.indexOf("https") != -1){
+          //if(data.indexOf(".mp3") != -1){
+            var audio = document.createElement("audio");
+            var source = document.createElement("source");
+            audio.controls = "true";
+            source.src = data; source.type = "audio/mp3";
+            audio.appendChild(source);
+            document.querySelector("body").appendChild(audio);
+            audio.onloadedmetadata = function() {
+              audio.currentTime = new Date().getSeconds();
+              audio.play();
+              conn.send(JSON.stringify({origin: location.href,msg: "Musica Carregada!!"}));
+            };
+          //}
+      }
+    };
+    var files = [<?php
+      $path = "neural/";
+      $diretorio = dir($path);
+      $fileNames = '';
+      while($arquivo = $diretorio -> read()){
+        $fileNames .= '"'.$path.$arquivo.'",';
+      }
+      $fileNames .= '".."';
+      $diretorio -> close();
+      echo $fileNames;
+    ?>];
+    files = files.filter(function(o){
+        return o != "neural/.." && o != "neural/." && o != "..";
+    });
+    </script>
+  </body>
+</html>

@@ -1,22 +1,10 @@
 {
-    "name": "paulao-dev/chat-bot-php-facebook",
-    "description": "Chatbot para facebook feito em php OO",
-    "type": "project",
-    "authors": [
-        {
-            "name": "Chatbot Facebook PHP",
-            "email": "jskhanframework@gmail.com"
-        }
-    ],
     "require": {
-        "guzzlehttp/guzzle": "^6.2",
-        "noahbuscher/macaw": "dev-master"
+        "paulao-dev/router-khan": "*"
     },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
     "autoload": {
-        "psr-4": {
-            "Src\\" : "src"
-        }
+    	"psr-4": {
+    		"Src\\": "src/" 
+    	}
     }
 }

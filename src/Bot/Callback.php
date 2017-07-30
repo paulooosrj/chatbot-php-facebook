@@ -1,15 +1,10 @@
 <?php
 	
 	namespace Src\Bot;
-	use \Src\Bot\Facebook as Facebook;
 
 	class Callbacks {
 
-	private static $facebook;
-
-	public function __construct($face){
-		self::$facebook = $face;
-		$this->Facebook = self::$facebook;
+	public function __construct(){
 		return $this;
 	}
 
@@ -25,41 +20,24 @@
         )));
 
 	}
-
-	public function getClima($cidade, $estado){
-		$cidade = urldecode($cidade); $estado = urldecode($estado);
-		$key = "d6cab59d";
-		$res = (array) json_decode(file_get_contents("https://api.hgbrasil.com/weather/?format=json&city_name={$cidade},{$estado}&key=".$key));
-		$resultado = (array) $res["results"];
-		$data = array(
-			"temperatura" => $resultado["temp"],
-			"descricao" => $resultado["description"],
-			"periodo" => $resultado["currently"],
-			"umidade" => $resultado["humidity"],
-			"v_vento" => $resultado["wind_speedy"],
-			"dia" => $resultado["date"],
-			"horario" => $resultado["time"]
-		);
-		return $data;
-	}
 	
 	public function callbackName($info){
 
-		$getPessoa = $this->Facebook->get($info["user_id"]);
+		$getPessoa = Facebook::get($info["user_id"]);
 		return array("text" => "Seu Nome é: ".$getPessoa["nome"]);
 
 	}
 
 	public function callbackOi($info){
 
-		$getPessoa = $this->Facebook->get($info["user_id"]);
+		$getPessoa = Facebook::get($info["user_id"]);
 		return array("text" => "Olá, tudo bem ".$getPessoa["nome"]." ?");
 
 	}
 
 	public function callbackBoaNoite($info){
 
-		$pessoa = $this->Facebook->get($info["user_id"]);
+		$pessoa = Facebook::get($info["user_id"]);
 		$n = explode(" ", $pessoa["nome"]);
 		return array("text" => "Olá ".$n[0].", Boa Noite!!");
 
@@ -67,24 +45,17 @@
 
 	public function callbackRoboIgual(){
 
-		return array("text" => "https://github.com/PaulaoDev/ChatBot-PHP-Facebook");
+		return array("text" => "https://github.com/PaulaoDeveloper/ChatBot-Messenger-PHP");
 
 	}
 
 	public function callbackClima($res){
 
-		$resValue = explode("-", $res["extern_value"]);
-		$cidade = urlencode(trim($resValue[0]));
-		$estado = urlencode(trim($resValue[1]));
-		if(strpos($cidade, '+')){ $cidade = str_replace('+','', $cidade); }
-		if(count($estado) != 1){ $erro = "Erro ao Digitar Sigla Do Estado!"; }
-		$clima = $this->getClima($cidade, $estado);
-		if(!empty($clima) && !isset($erro)){
-			$fraseClima = "⭕ {$clima["temperatura"]}ºC \n☁ {$clima["descricao"]} \n🕐 {$clima["periodo"]} \n🎈 Umidade: {$clima["umidade"]} \n🌀 {$clima["v_vento"]} \n📅 {$clima["dia"]} \n🕒 {$clima["horario"]}";
-		}else{
-			$fraseClima = "Não achei o Clima da cidade Digitada. \nTente Novamente.";
-		}
-		if(isset($erro)){ $fraseClima = $erro; }
+
+		$resValue = explode(" ", $res["extern_value"]);
+		$clima = (array) json_decode(file_get_contents("http://chatbotphp.ga/rest?cidade={$resValue[0]}&estado={$resValue[1]}"));
+		$fraseClima = "⭕ {$clima["temperatura"]}ºC \n☁ {$clima["descricao"]} \n🕐 {$clima["periodo"]} \n🎈 Umidade: {$clima["humidade"]} \n🌀 {$clima["v_vento"]} \n📅 {$clima["dia"]} \n🕒 {$clima["horario"]}";
+		//.' ºC'
 		return array("text" => $fraseClima);
 
 	}
@@ -124,10 +95,11 @@
 
 	public function callbackComecar($info){
 
+		$estado[$info["sender"]["id"]] = "comecando";
 		$dataBtn = $this->montaBotao($info["sender"]["id"], "Escolha uma Opção", array(
 			array(
             	"type" => "web_url",
-            	"url"  => "https://github.com/PaulaoDev/ChatBot-PHP-Facebook",
+            	"url"  => "https://github.com/PaulaoDeveloper/ChatBot-Messenger-PHP",
             	"title"=> "Repositorio"
           	),
           	array(
@@ -153,7 +125,7 @@
 
 	public function help(){
 
-		return array("text" => "↪ Meu Nome \n↪ Oi \n↪ Boa Noite \n↪ Fazer um robo igual \n↪ /clima 'cidade'-'estado em sigla' \n↪ /procurar 'algo para pesquisar' \n↪ /youtube 'Procurar Video No Youtube'");
+		return array("text" => "↪ Meu Nome \n↪ Oi \n↪ Boa Noite \n↪ Fazer um robo igual \n↪ /clima 'cidade' 'estado em sigla' \n↪ /procurar 'algo para pesquisar' \n↪ /youtube 'Procurar Video No Youtube'");
 
 	}
 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Servidor Websocket</title>
+</head>
+<body>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
+	<script type="text/javascript">
+		var socket = io("https://gentle-ocean-75288.herokuapp.com");
+/*		socket.emit('publish', {
+			canal: "paulo",
+			data: {
+				"nome": "Paulao",
+				"idade": 15
+			}
+		});*/
+		socket.on('channel-chatbotphp', function(d){
+			if(typeof d === "string"){ d = JSON.parse(d); };
+			var parse = JSON.parse(d);
+			alert(parse.message);
+		});
+	</script>
+</body>
+</html>

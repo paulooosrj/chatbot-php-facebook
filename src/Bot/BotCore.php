@@ -1,6 +1,8 @@
 <?php
 	
 	namespace Src\Bot;
+	use Src\Bot\Callbacks as Callbacks;
+	use Src\Bot\Facebook as Facebook;
 
 	require_once 'config/botConfig/config.php';
 
@@ -28,6 +30,7 @@
     		self::$token = BOT_TOKEN;
     		self::$endpoint = BOT_ENDPOINT;
     		self::$dominio = BOT_DOMINIO;
+    		self::$callbacks = new Callbacks(new Facebook(BOT_KEY));
     	}	
 
     	// Configs do ChatBot
@@ -41,33 +44,27 @@
 			}
 		}
 
-		public function setCallbacks($callback){
-			self::$callbacks = $callback;
-		}
-
 		// Envia o Log Pelo Pusher
 		public function MsgPusher($msg){
-			$canal = "chatbotphp";
+			/*$canal = "chatbotphp";
   			$post = new \Src\Http\Post("http://chatbotphp.ga/server-websocket", array(
 				"canal" => $canal,
     			"data" => $msg
-    		));
+    		));*/
 		}
 
 		public function sendApi($d){
 			/* KEY DA PAGINA GERADO NO MESSENGER NO FACEBOOK DEVELOPERS */
 			$key = self::$key;
+			$request = new \App\Request\Request();
 			// Rest do Chatbot
 			$url = 'https://graph.facebook.com/v2.6/me/messages?access_token='.$key;
 			// Iniciando o Envio.
-			$client = new \GuzzleHttp\Client(['headers' => [
-				'Content-Type' => 'application/json'
-			]]);
-			//file_put_contents('neural/debug.json', json_encode($d));
-			// Envia Requisicao
-			if (!empty($d['message'])){
-  				$client->post($url, array('body' => json_encode($d)));
-  			} 
+			$request->Post([
+				"url" => $url,
+				"header" => "Content-Type: application/json",
+				"data" => json_encode($d)
+			]);
 		}
 
 		public function eventsTrigger($id, $text, $user){
